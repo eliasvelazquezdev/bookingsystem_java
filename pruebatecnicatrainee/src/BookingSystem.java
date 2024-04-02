@@ -19,7 +19,7 @@ public class BookingSystem {
 
         for (int r = 0; r < matrix.length; r++){
             if (r <= 8) {
-                System.out.print("Fila " + "0"+(r + 1) + ": ");
+                System.out.print("Fila " + "0" + (r + 1) + ": ");
             } else {
                 System.out.print("Fila " + (r + 1) + ": ");
             }

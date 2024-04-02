@@ -20,7 +20,7 @@ public class TicketingSystem {
 
         for (Ticket ticket: ticketList){
             if (ticket.getRow() == row){
-                System.out.println(ticket);
+                ticket.getTicketInfo();
             }
         }
     }

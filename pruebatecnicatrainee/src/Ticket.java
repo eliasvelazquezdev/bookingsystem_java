@@ -1,9 +1,11 @@
+import java.time.LocalDate;
+
 public class Ticket {
     int number;
     int row;
     int seat;
-    String purchaseDate;
-    String expirationDate;
+    LocalDate purchaseDate;
+    LocalDate expirationDate;
     double price;
 
     //Constructor
@@ -11,8 +13,8 @@ public class Ticket {
         int number,
         int row,
         int seat,
-        String purchaseDate,
-        String expirationDate,
+        LocalDate purchaseDate,
+        LocalDate expirationDate,
         double price
     ){
         this.number = number;
@@ -36,11 +38,11 @@ public class Ticket {
         return this.seat;
     }
 
-    public String getPurchaseDate(){
+    public LocalDate getPurchaseDate(){
         return this.purchaseDate;
     }
 
-    public String getExpirationDate(){
+    public LocalDate getExpirationDate(){
         return this.expirationDate;
     }
 
@@ -52,6 +54,11 @@ public class Ticket {
         this.price = price;
     }
 
+    public void getTicketInfo(){
+        System.out.println("Información de ticket " + this.number + ":");
+        System.out.print("Fila: " + this.row + "," + "Asiento: " + this.seat + "," + "Fecha de compra: " + this.purchaseDate + "," + "Fecha de expiración: " + this.expirationDate + "," + "Precio: " + this.price);
+        System.out.println(" ");
+    }
 
 
 }
