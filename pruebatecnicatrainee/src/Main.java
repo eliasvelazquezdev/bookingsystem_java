@@ -14,7 +14,9 @@ public class Main {
             System.out.println("Por favor, seleccione una opción del menú: ");
             System.out.println("1. Visualizar mapa de asientos");
             System.out.println("2. Reservar asiento");
-            System.out.println("3. Salir del sistema");
+            System.out.println("3. Ver precio total de tickets");
+            System.out.println("4. Ver precio de tickets por fila");
+            System.out.println("5. Salir del sistema");
 
             int userInput = input.nextInt();
             switch (userInput){
@@ -25,6 +27,10 @@ public class Main {
                     bookingSystem.bookSeats(seatsMap, input);
                     break;
                 case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
                     option = "exit";
                     System.out.println("Gracias por utilizar el programa. Hasta luego...");
                     break;
