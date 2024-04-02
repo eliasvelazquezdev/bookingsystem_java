@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
 public class BookingSystem {
 
     public String[][] getSeatsMatrix(){
@@ -30,10 +32,11 @@ public class BookingSystem {
         }
     }
 
-    public void bookSeats(String[][] matrix, Scanner input){
+    public Map<String, Integer> bookSeats(String[][] matrix, Scanner input){
         System.out.println("A continuación se le solicitará el número de fila y asiento para realizar la reserva. Para volver al menú principal ingrese el texto 'salir'.");
 
         String option = "si";
+        Map<String, Integer> rowAndSeat = new HashMap<>();
 
         while (option.equals("si")) {
 
@@ -53,11 +56,15 @@ public class BookingSystem {
             } else {
                 System.out.println("¡El asiento ha sido reservado con éxito!");
                 matrix[row - 1][seat - 1] = "X";
+                rowAndSeat.put("row", row);
+                rowAndSeat.put("seat", seat);
             }
 
             System.out.println("¿Desea realizar otra reserva? Escriba 'si' para continuar o 'menu' para volver al menú principal.");
             option = input.next();
         }
+
+        return rowAndSeat;
 
     }
 }
