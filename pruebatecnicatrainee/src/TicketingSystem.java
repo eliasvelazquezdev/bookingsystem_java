@@ -3,7 +3,10 @@ import java.util.List;
 
 
 public class TicketingSystem {
-    List<Ticket> ticketList = new ArrayList<Ticket>(100);
+
+    public ArrayList<Ticket> createTicketsList(){
+        return new ArrayList<Ticket>(100);
+    }
 
     public double getTotalTicketPriceFromList(ArrayList<Ticket> ticketList){
         double totalTicketPrice = 0;
@@ -16,13 +19,38 @@ public class TicketingSystem {
     }
 
     public void getTicketInfoByRow(ArrayList<Ticket> ticketList, int row){
-        System.out.println("Esta es la información de los tickets pertenecientes a la fila " + row);
+        if (row < 0 || row > 10){
+            System.out.println("Error. Ha ingresado un número de fila incorrecto.");
+        } else {
+            System.out.println("Esta es la información de los tickets pertenecientes a la fila " + row);
 
-        for (Ticket ticket: ticketList){
-            if (ticket.getRow() == row){
-                ticket.getTicketInfo();
+            for (Ticket ticket: ticketList){
+                if (ticket.getRow() == row){
+                    ticket.getTicketInfo();
+                }
             }
         }
+
+    }
+
+    public double getTicketPriceByRow(int row){
+        double ticketPrice = 0;
+
+        switch (row){
+            case 1 -> ticketPrice = 1500;
+            case 2 -> ticketPrice = 1200;
+            case 3 -> ticketPrice = 1000;
+            case 4 -> ticketPrice = 900;
+            case 5 -> ticketPrice = 750;
+            case 6 -> ticketPrice = 600;
+            case 7 -> ticketPrice = 500;
+            case 8 -> ticketPrice = 350;
+            case 9 -> ticketPrice = 200;
+            case 10 -> ticketPrice = 150;
+            default -> System.out.println("Error. Ha ingresado un número de fila incorrecto.");
+        }
+
+        return ticketPrice;
     }
 
 

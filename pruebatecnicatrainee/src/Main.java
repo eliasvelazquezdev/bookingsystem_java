@@ -1,11 +1,14 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         BookingSystem bookingSystem = new BookingSystem();
+        TicketingSystem ticketingSystem = new TicketingSystem();
 
         String[][] seatsMap = bookingSystem.getSeatsMatrix();
+        ArrayList<Ticket> ticketsList = ticketingSystem.createTicketsList();
 
         System.out.println("Bienvenido/a al sistema de reserva de asientos.");
 
