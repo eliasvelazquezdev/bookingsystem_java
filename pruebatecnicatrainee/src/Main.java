@@ -40,16 +40,20 @@ public class Main {
                     LocalDate expirationDate = purchaseDate.plusDays(7);
                     double ticketPrice = ticketingSystem.getTicketPriceByRow(row);
 
-                    Ticket ticket = new Ticket(
-                        ticketNumber,
-                        row,
-                        seat,
-                        purchaseDate,
-                        expirationDate,
-                        ticketPrice
-                    );
+                    System.out.println(seatsMatrix[row][seat]);
 
-                    ticketsList.add(ticket);
+                    if (seatsMatrix[row][seat].equals("L")){
+                        Ticket ticket = new Ticket(
+                            ticketNumber,
+                            row,
+                            seat,
+                            purchaseDate,
+                            expirationDate,
+                            ticketPrice
+                        );
+
+                        ticketsList.add(ticket);
+                    }
                     break;
                 case 3:
                     System.out.println("El precio combinado de todos los asientos/tickets reservados es: $" + ticketingSystem.getTotalTicketPriceFromList(ticketsList) + "\".");

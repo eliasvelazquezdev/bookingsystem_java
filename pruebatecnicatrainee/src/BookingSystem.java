@@ -4,7 +4,6 @@ import java.util.Map;
 public class BookingSystem {
 
     public String[][] getSeatsMatrix(){
-
         String [][] seatsMatrix = new String [10][10];
 
         for (int r = 0; r < seatsMatrix.length; r++){
@@ -12,7 +11,6 @@ public class BookingSystem {
                 seatsMatrix[r][c] = "L";
             }
         }
-
         return seatsMatrix;
     }
 
@@ -33,38 +31,40 @@ public class BookingSystem {
     }
 
     public Map<String, Integer> bookSeats(String[][] matrix, Scanner input){
-        System.out.println("A continuación se le solicitará el número de fila y asiento para realizar la reserva. Para volver al menú principal ingrese el texto 'salir'.");
-
         String option = "si";
         Map<String, Integer> rowAndSeat = new HashMap<>();
 
         while (option.equals("si")) {
-
             System.out.println("Ingrese la fila del asiento a reservar: ");
             int row = input.nextInt();
+
+            if (row > 10 || row < 0){
+                System.out.println("Ha ingresado un número de fila inválido. Solo existen 10 filas.");
+                continue;
+            }
 
             System.out.println("Ingrese el número de asiento a reservar: ");
             int seat = input.nextInt();
 
-            if (row > 10 || row < 0 || seat > 10 || seat < 0){
-                System.out.println("Ha ingresado una fila o número de asiento inválido. Solo existen 10 filas y 10 asientos por fila.");
+            if (seat > 10 || seat < 0){
+                System.out.println("Ha ingresado número de asiento inválido. Solo existen 10 asientos por fila.");
                 continue;
             }
 
-            if (matrix[row][seat].equals("X")){
+            if (matrix[row - 1][seat - 1].equals("X")){
                 System.out.println("Lo sentimos, el asiento seleccionado ya está reservado.");
             } else {
                 System.out.println("¡El asiento ha sido reservado con éxito!");
                 matrix[row - 1][seat - 1] = "X";
-                rowAndSeat.put("row", row);
-                rowAndSeat.put("seat", seat);
             }
+
+            rowAndSeat.put("row", row);
+            rowAndSeat.put("seat", seat);
 
             System.out.println("¿Desea realizar otra reserva? Escriba 'si' para continuar o 'menu' para volver al menú principal.");
             option = input.next();
         }
-
+        System.out.println("Message from bookSeats method: " + rowAndSeat);
         return rowAndSeat;
-
     }
 }

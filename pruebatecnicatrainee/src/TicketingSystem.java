@@ -8,31 +8,6 @@ public class TicketingSystem {
         return new ArrayList<Ticket>(100);
     }
 
-    public double getTotalTicketPriceFromList(ArrayList<Ticket> ticketList){
-        double totalTicketPrice = 0;
-
-        for (Ticket ticket: ticketList){
-            totalTicketPrice += ticket.getPrice();
-        }
-
-        return totalTicketPrice;
-    }
-
-    public void getTicketInfoByRow(ArrayList<Ticket> ticketList, int row){
-        if (row < 0 || row > 10){
-            System.out.println("Error. Ha ingresado un número de fila incorrecto.");
-        } else {
-            System.out.println("Esta es la información de los tickets pertenecientes a la fila " + row);
-
-            for (Ticket ticket: ticketList){
-                if (ticket.getRow() == row){
-                    ticket.getTicketInfo();
-                }
-            }
-        }
-
-    }
-
     public double getTicketPriceByRow(int row){
         double ticketPrice = 0;
 
@@ -49,9 +24,38 @@ public class TicketingSystem {
             case 10 -> ticketPrice = 150;
             default -> System.out.println("Error. Ha ingresado un número de fila incorrecto.");
         }
-
         return ticketPrice;
     }
+
+    public double getTotalTicketPriceFromList(ArrayList<Ticket> ticketList){
+        double totalTicketPrice = 0;
+
+        for (Ticket ticket: ticketList){
+            totalTicketPrice += ticket.getPrice();
+        }
+
+        return totalTicketPrice;
+    }
+
+    public void getTicketInfoByRow(ArrayList<Ticket> ticketList, int row){
+        if (row < 0 || row > 10){
+            System.out.println("Error. Ha ingresado un número de fila incorrecto.");
+        } else {
+            System.out.println("Esta es la información de los tickets pertenecientes a la fila " + row);
+            System.out.println(ticketList.toString());
+            for (Ticket ticket: ticketList){
+                if (ticket.getRow() == row){
+                    ticket.getTicketInfo();
+                    System.out.println(" ");
+                } else {
+                    System.out.println("No hay tickets correspondientes a ningún asiento reservado en esta fila.");
+                    System.out.println(" ");
+                }
+            }
+        }
+
+    }
+
 
 
 }
