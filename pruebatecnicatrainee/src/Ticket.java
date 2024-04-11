@@ -7,6 +7,7 @@ public class Ticket {
     LocalDate purchaseDate;
     LocalDate expirationDate;
     double price;
+    Customer customer;
 
     //Constructor
     public Ticket(
@@ -15,7 +16,8 @@ public class Ticket {
         int seat,
         LocalDate purchaseDate,
         LocalDate expirationDate,
-        double price
+        double price,
+        Customer customer
     ){
         this.number = number;
         this.row = row;
@@ -23,6 +25,7 @@ public class Ticket {
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
         this.price = price;
+        this.customer = customer;
     }
 
     // Getters & Setters
@@ -56,7 +59,7 @@ public class Ticket {
 
     public void getTicketInfo(){
         System.out.println("Información de ticket " + this.number + ":");
-        System.out.print("Fila: " + this.row + ", " + "Asiento: " + this.seat + ", " + "Fecha de compra: " + this.purchaseDate + ", " + "Fecha de expiración: " + this.expirationDate + ", " + "Precio: $" + this.price);
+        System.out.print("Fila: " + this.row + ", " + "Asiento: " + this.seat + ", " + "Fecha de compra: " + this.purchaseDate + ", " + "Fecha de expiración: " + this.expirationDate + ", " + "Precio: $" + this.price + ", " + this.customer.getCustomerInfo());
         System.out.println(" ");
     }
 }

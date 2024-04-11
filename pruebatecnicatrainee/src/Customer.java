@@ -32,4 +32,9 @@ public class Customer {
         return this.lastName;
     }
 
+    public String getCustomerInfo(){
+        String customerInfo = "ID Cliente: " + getCustomer_id() + ", Nombre y apellido: " + getName() + " " + getLastName() + ", DNI: "  + getDni() + ".";
+        return customerInfo;
+    }
+
 }

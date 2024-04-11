@@ -14,6 +14,24 @@ public class Main {
         ArrayList<Ticket> ticketsList = ticketingSystem.createTicketsList();
 
         System.out.println("Bienvenido/a al sistema de reserva de asientos.");
+        System.out.println("Por favor ingrese sus datos para utilizar el sistema.");
+        System.out.println("Ingrese nombre: ");
+        String customerName = input.next();
+
+        System.out.println("Ingrese apellido: ");
+        String customerLastName = input.next();
+
+        System.out.println("Ingrese DNI: ");
+        int customerDNI = input.nextInt();
+
+        Random random = new Random();
+        int customerID = random.nextInt(9001) + 1000;
+        Customer customer = new Customer(
+                customerID,
+                customerDNI,
+                customerName,
+                customerLastName
+        );
 
         String option = "start";
 
@@ -33,7 +51,6 @@ public class Main {
                 case 2:
                     Map<String, Integer> rowAndSeatMap = bookingSystem.bookSeats(seatsMatrix, input);
 
-                    Random random = new Random();
                     int ticketNumber = random.nextInt(9001) + 1000;
                     int row = rowAndSeatMap.get("row");
                     int seat = rowAndSeatMap.get("seat");
@@ -50,7 +67,8 @@ public class Main {
                             seat,
                             purchaseDate,
                             expirationDate,
-                            ticketPrice
+                            ticketPrice,
+                            customer
                         );
 
                         boolean isDuplicate = false;
