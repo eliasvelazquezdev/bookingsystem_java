@@ -1,9 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class TicketingSystem {
-
     public ArrayList<Ticket> createTicketsList(){
         return new ArrayList<Ticket>(100);
     }
@@ -42,20 +40,20 @@ public class TicketingSystem {
             System.out.println("Error. Ha ingresado un número de fila incorrecto.");
         } else {
             System.out.println("Esta es la información de los tickets pertenecientes a la fila " + row);
-            System.out.println(ticketList.toString());
-            for (Ticket ticket: ticketList){
-                if (ticket.getRow() == row){
-                    ticket.getTicketInfo();
-                    System.out.println(" ");
-                } else {
-                    System.out.println("No hay tickets correspondientes a ningún asiento reservado en esta fila.");
-                    System.out.println(" ");
+
+            if (ticketList.isEmpty()){
+                System.out.println("No hay tickets correspondientes a ningún asiento reservado en esta fila.");
+            } else {
+                for (Ticket ticket: ticketList){
+                    if (ticket.getRow() == row){
+                        ticket.getTicketInfo();
+                        System.out.println(" ");
+                    } else {
+                        System.out.println("No hay tickets correspondientes a ningún asiento reservado en esta fila.");
+                        System.out.println(" ");
+                    }
                 }
             }
         }
-
     }
-
-
-
 }

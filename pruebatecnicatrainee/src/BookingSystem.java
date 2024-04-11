@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
 public class BookingSystem {
-
     public String[][] getSeatsMatrix(){
         String [][] seatsMatrix = new String [10][10];
 
@@ -12,6 +11,10 @@ public class BookingSystem {
             }
         }
         return seatsMatrix;
+    }
+
+    public String getSeatStatus(String[][] matrix, int row, int seat){
+        return matrix[row - 1][seat - 1];
     }
 
     public void printSeatsMap(String[][] matrix){

@@ -59,6 +59,4 @@ public class Ticket {
         System.out.print("Fila: " + this.row + ", " + "Asiento: " + this.seat + ", " + "Fecha de compra: " + this.purchaseDate + ", " + "Fecha de expiración: " + this.expirationDate + ", " + "Precio: $" + this.price);
         System.out.println(" ");
     }
-
-
 }

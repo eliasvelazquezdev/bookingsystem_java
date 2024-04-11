@@ -16,6 +16,7 @@ public class Main {
         System.out.println("Bienvenido/a al sistema de reserva de asientos.");
 
         String option = "start";
+
         while(option.equals("start")){
             System.out.println("Por favor, seleccione una opción del menú: ");
             System.out.println("1. Visualizar mapa de asientos");
@@ -40,9 +41,9 @@ public class Main {
                     LocalDate expirationDate = purchaseDate.plusDays(7);
                     double ticketPrice = ticketingSystem.getTicketPriceByRow(row);
 
-                    System.out.println(seatsMatrix[row][seat]);
+                    String seatStatus = bookingSystem.getSeatStatus(seatsMatrix, row, seat);
 
-                    if (seatsMatrix[row][seat].equals("L")){
+                    if (seatStatus.equals("X")){
                         Ticket ticket = new Ticket(
                             ticketNumber,
                             row,
@@ -52,7 +53,19 @@ public class Main {
                             ticketPrice
                         );
 
-                        ticketsList.add(ticket);
+                        boolean isDuplicate = false;
+
+                        for (Ticket existingTicket : ticketsList) {
+                            if (existingTicket.getRow() == ticket.getRow() && existingTicket.getSeat() == ticket.getSeat()) {
+                                // Found a duplicate
+                                isDuplicate = true;
+                                break;
+                            }
+                        }
+
+                        if (!isDuplicate) {
+                            ticketsList.add(ticket);
+                        }
                     }
                     break;
                 case 3:
@@ -72,7 +85,5 @@ public class Main {
                     break;
             }
         }
-
     }
-
 }
